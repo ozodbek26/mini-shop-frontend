@@ -1,13 +1,23 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+// import Header from "./components/Header/Header";
+// import Footer from "./components/Footer/Footer";
+import HomeLogin from "./pages/HomeLogin/HomeLogin";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import MainPage from "./pages/MainPage/MainPage";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Header />} />
-      <Route path="/about" element={<Footer />} />
+      <Route path="/" element={<HomeLogin />} />
+      <Route path="/createAccount" element={<CreateAccount />} />
+      <Route path="/mainPage" element={<MainPage />} />
+      <Route path="/userProfile" element={<UserProfile />} />
     </Routes>
   );
 }
+
+// MainPage
+
+// UserProfile
