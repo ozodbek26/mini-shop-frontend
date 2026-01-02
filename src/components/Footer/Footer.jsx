@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import styles from "./Footer.module.scss";
 
 export default function Footer() {
-  useEffect(() => {
-    const df = localStorage.getItem("username");
+  // useEffect(() => {
+  //   const df = localStorage.getItem("username");
 
-    alert("привет" + df);
-  }, []);
+  //   alert("привет" + df);
+  // }, []);
   return (
     <footer className={styles.Footer}>
       <div className={styles.column}>

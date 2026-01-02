@@ -27,7 +27,6 @@ export default function CreateAccount() {
   }, [file]);
 
   function check() {
-  
     if (password.length < 8 || password2.length < 8) {
       alert(
         "Пароль должен быть хотя бы 8 символов  или вы не ввели данные вовсе"
@@ -86,11 +85,12 @@ export default function CreateAccount() {
         setage("");
         setFile(null);
         setB64("");
+        localStorage.setItem("username", username);
+        navigate("/");
       })
       .catch((error) => {
         alert(error.message);
       });
-    navigate("/");
   }
 
   return (

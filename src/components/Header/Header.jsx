@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-
 import profilePicture from "../../assets/images/profilePicture.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const [userImage, setUserImage] = useState(null);
+  const navigate = useNavigate();
 
+  const [userImage, setUserImage] = useState(null);
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -38,10 +39,13 @@ export default function Header() {
       </div>
 
       <div className={styles.rightSection}>
-        <div className={styles.rightSection_Profile}>
+        <div
+          className={styles.rightSection_Profile}
+          onClick={() => navigate("/userProfile")}
+        >
           <img
             className={styles.rightSection_Profile_img}
-            src={userImage}
+            src={userImage || profilePicture}
             alt="profilePicture"
           />
         </div>

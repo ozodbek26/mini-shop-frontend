@@ -8,6 +8,9 @@ import MainPage from "./pages/MainPage/MainPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
 export default function App() {
+
+
+  
   return (
     <Routes>
       <Route path="/" element={<HomeLogin />} />
