@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import styles from "./HomeLogin.module.scss";
+import { useNavigate } from "react-router-dom";
 
 // userverification
 // const { username, Password } = req.body;
 // success
 
 export default function HomeLogin() {
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState();
 
   const [username, setUsername] = useState();
@@ -39,6 +42,7 @@ export default function HomeLogin() {
           localStorage.setItem("password", JSON.stringify(password));
           setUsername("");
           setPassword("");
+          navigate("/mainPage");
         }
       })
       .catch((error) => {

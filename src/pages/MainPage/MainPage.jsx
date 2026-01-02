@@ -1,7 +1,18 @@
-import React from 'react'
+import React from "react";
 
-export default function MainPage() {
+import styles from "./MainPage.module.scss";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+
+export default function 
+MainPage() {
   return (
-    <div>MainPage</div>
-  )
+    <div className={styles.MainPage}>
+      <Header />
+      <div>
+        <p>MainPage</p>
+      </div>
+      <Footer />
+    </div>
+  );
 }
