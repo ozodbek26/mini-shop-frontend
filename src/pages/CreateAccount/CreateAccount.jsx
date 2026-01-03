@@ -146,6 +146,9 @@ export default function CreateAccount() {
         <a className={styles.link} href="/">
           Уже есть аккаунт? Войти
         </a>
+        <a className={styles.link} href="/recoverAccount">
+          забыл имя/пароль аккаунта
+        </a>
       </div>
     </div>
   );

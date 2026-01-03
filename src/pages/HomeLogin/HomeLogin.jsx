@@ -32,8 +32,8 @@ export default function HomeLogin() {
         alert(data.message);
 
         if (data.success) {
-          localStorage.setItem("username", JSON.stringify(username));
-          localStorage.setItem("password", JSON.stringify(password));
+          localStorage.setItem("username", username);
+          localStorage.setItem("password", password);
           setUsername("");
           setPassword("");
           navigate("/mainPage");

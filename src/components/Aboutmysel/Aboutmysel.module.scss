@@ -1,0 +1,56 @@
+.aboutMyself {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+
+  .addButton {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #4a90e2;
+    background: #ffffff;
+    color: #4a90e2;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: #4a90e2;
+      color: #ffffff;
+    }
+  }
+
+  .inputBlock {
+    display: none; // по умолчанию скрыто
+    flex-direction: row;
+    gap: 8px;
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #4a90e2;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #4a90e2;
+      background: #ffffff;
+      color: #4a90e2;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background: #4a90e2;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .show {
+    display: flex;
+  }
+}
