@@ -38,12 +38,12 @@ export default function UserProfile() {
   }
 
   function handleSubmit() {
-    if (!text || text.length < 10 || text.length > 50) {
+    if (!text || text.length < 10 || text.length > 250) {
       alert("Текст должен быть от 10 до 50 символов");
       return;
     }
     const wf = {
-      oldUser: { username },
+      username,
       aboutmyself: text,
     };
     fetch("http://localhost:7000/change/aboutmyself", {
@@ -56,6 +56,7 @@ export default function UserProfile() {
         console.log(data);
         setText("");
         setF1(false);
+        setAboutmyself(data.aboutmyself);
       })
 
       .catch((err) => {
@@ -177,7 +178,7 @@ export default function UserProfile() {
 
   function changePhoto() {
     if (!text4) {
-      alert("в не загрузиле нечего");
+      alert("Вы не загрузили файл");
       return;
     }
 
@@ -185,6 +186,7 @@ export default function UserProfile() {
       username,
       img: text4,
     };
+
     fetch("http://localhost:7000/change/photo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -192,11 +194,36 @@ export default function UserProfile() {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (!data.success) {
+          alert(data.error);
+          return;
+        }
         alert(data.message);
+        setUserImage(data.img || text4);
+        setF4(false);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch((err) => console.error(err));
+  }
+
+  function deleteAccount() {
+    const payload = { username };
+
+    fetch("http://localhost:7000/delete/account", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert(data.message);
+          localStorage.removeItem("username");
+          navigate("/");
+        } else {
+          alert(data.error);
+        }
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -274,11 +301,23 @@ export default function UserProfile() {
           >
             Выйти
           </button>
-          <button className={styles.delete}>Удалить аккаунт</button>
+          <button
+            onClick={() => {
+              const confirmed = window.confirm(
+                "Вы действительно хотите удалить аккаунт?"
+              );
+              if (confirmed) {
+                deleteAccount();
+              } else {
+                alert("Удаление отменено");
+              }
+            }}
+            className={styles.delete}
+          >
+            Удалить аккаунт
+          </button>
         </div>
       </div>
     </div>
   );
 }
-
-// const { oldUser, img } = req.body;

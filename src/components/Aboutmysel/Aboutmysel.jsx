@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Aboutmysel.module.scss";
 
 export default function Aboutmysel({
@@ -20,9 +20,19 @@ export default function Aboutmysel({
       <div className={`${styles.inputBlock} ${showInput ? styles.show : ""}`}>
         <input
           type={type}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => {
+            if (type === "file") {
+              const file = e.target.files[0];
+              if (!file) return;
+              const reader = new FileReader();
+              reader.onload = () => setText(reader.result);
+              reader.readAsDataURL(file);
+            } else {
+              setText(e.target.value);
+            }
+          }}
           placeholder={placeholder}
+          value={type !== "file" ? text : undefined} 
         />
         <button onClick={handleSubmit}>Отправить</button>
       </div>

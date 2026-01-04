@@ -7,6 +7,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const [userImage, setUserImage] = useState(null);
+  const [balance, setBalance] = useState(null);
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -20,6 +21,7 @@ export default function Header() {
       .then((res) => res.json())
       .then((data) => {
         setUserImage(data.image);
+        setBalance(data.balance)
       })
       .catch((err) => {
         console.error(err);
@@ -39,6 +41,11 @@ export default function Header() {
       </div>
 
       <div className={styles.rightSection}>
+        <div className={styles.balance}>
+          <span className={styles.balanceLabel}>Баланс</span>
+          <span className={styles.balanceValue}>{balance} $</span>
+        </div>
+
         <div
           className={styles.rightSection_Profile}
           onClick={() => navigate("/userProfile")}

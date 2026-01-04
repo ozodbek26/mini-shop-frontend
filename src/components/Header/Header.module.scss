@@ -38,6 +38,29 @@
         display: flex;
         gap: 20px;
 
+        .balance {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: default;
+
+            .balanceLabel {
+                font-size: 18px;
+                opacity: 0.8;
+            }
+
+            .balanceValue {
+                font-size: 22px;
+                font-weight: 600;
+                color: #fff;
+            }
+        }
+
+
         .rightSection_Profile {
             display: flex;
             align-items: center;
