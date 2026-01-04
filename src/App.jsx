@@ -7,6 +7,7 @@ import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import MainPage from "./pages/MainPage/MainPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import RecoverAccount from "./pages/RecoverAccount/RecoverAccount";
+import PublishProduct from "./pages/publishProduct/publishProduct";
 
 export default function App() {
   return (
@@ -16,10 +17,7 @@ export default function App() {
       <Route path="/mainPage" element={<MainPage />} />
       <Route path="/userProfile" element={<UserProfile />} />
       <Route path="/recoverAccount" element={<RecoverAccount />} />
+      <Route path="/publishProduct" element={<PublishProduct />} />
     </Routes>
   );
 }
-
-// MainPage
-
-// UserProfile

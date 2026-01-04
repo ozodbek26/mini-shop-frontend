@@ -21,7 +21,7 @@ export default function Header() {
       .then((res) => res.json())
       .then((data) => {
         setUserImage(data.image);
-        setBalance(data.balance)
+        setBalance(data.balance);
       })
       .catch((err) => {
         console.error(err);
@@ -62,7 +62,13 @@ export default function Header() {
         <a href="#" className={styles.action}>
           Корзина
         </a>
-        <a href="#" className={styles.action}>
+        <a
+          href="#"
+          onClick={() => {
+            navigate("/publishProduct");
+          }}
+          className={styles.action}
+        >
           Опубликовать продукт
         </a>
       </div>
