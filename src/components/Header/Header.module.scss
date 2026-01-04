@@ -13,6 +13,39 @@
         align-items: center;
         gap: 30px;
 
+        .block {
+
+            display: flex;
+            gap: 20px;
+
+            align-items: center;
+
+            .block_input {
+                width: 240px;
+                border-radius: 20px;
+                border: none;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                height: 30px;
+
+            }
+
+            .block_button {
+                width: 50%;
+                padding: 14px;
+                background: #2ecc71;
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+
+
+
+        }
+
         .logo {
             width: 50px;
             height: 50px;
@@ -22,6 +55,8 @@
         .nav {
             display: flex;
             gap: 20px;
+
+
 
             a {
                 color: #fff;

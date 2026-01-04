@@ -38,6 +38,10 @@ export default function Header() {
           <a href="#">Техника</a>
           <a href="#">Материалы</a>
         </nav>
+        <div className={styles.block}>
+          <input className={styles.block_input} type="text" />
+          <button className={styles.block_button}>найти</button>
+        </div>
       </div>
 
       <div className={styles.rightSection}>
