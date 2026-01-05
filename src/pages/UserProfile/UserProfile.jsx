@@ -260,7 +260,7 @@ export default function UserProfile() {
             placeholder={"напиши свое новое имя"}
             type={"file"}
           />
-          <Aboutmysel
+          {/* <Aboutmysel
             buttonText={"Сменить имя"}
             showInput={f3}
             toggleInput={name3}
@@ -269,7 +269,7 @@ export default function UserProfile() {
             handleSubmit={nameCheck}
             placeholder={"напиши свое новое имя"}
             type={"text"}
-          />
+          /> */}
           <Aboutmysel
             buttonText={"Сменить пароль"}
             showInput={f2}

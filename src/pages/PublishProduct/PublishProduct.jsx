@@ -173,7 +173,7 @@ export default function PublishProduct() {
                 min="0"
                 max="9999999999"
               />
-              <span>сом</span>
+              <span>$</span>
             </div>
           </label>
 

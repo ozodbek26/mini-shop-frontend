@@ -28,15 +28,22 @@ export default function Header() {
       });
   }, []);
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className={styles.Header}>
       <div className={styles.leftSection}>
         <img className={styles.logo} src="" alt="logo" />
         <nav className={styles.nav}>
-          <a href="#">Овощи</a>
-          <a href="#">Фрукты</a>
-          <a href="#">Техника</a>
-          <a href="#">Материалы</a>
+          <a onClick={() => scrollToSection("vegetables")}>Овощи</a>
+          <a onClick={() => scrollToSection("fruits")}>Фрукты</a>
+          <a onClick={() => scrollToSection("technique")}>Техника</a>
+          <a onClick={() => scrollToSection("materials")}>Материалы</a>
         </nav>
         <div className={styles.block}>
           <input className={styles.block_input} type="text" />
@@ -60,7 +67,11 @@ export default function Header() {
             alt="profilePicture"
           />
         </div>
-        <a href="#" className={styles.action}>
+        <a
+          href="#"
+          onClick={() => navigate("/aboutProducts")}
+          className={styles.action}
+        >
           Информация о продажах
         </a>
         <a href="#" className={styles.action}>

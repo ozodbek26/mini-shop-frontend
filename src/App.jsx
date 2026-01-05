@@ -8,16 +8,20 @@ import MainPage from "./pages/MainPage/MainPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import RecoverAccount from "./pages/RecoverAccount/RecoverAccount";
 import PublishProduct from "./pages/publishProduct/publishProduct";
+import AboutProducts from "./pages/AboutProducts/AboutProducts";
+import Details from "./pages/Details/Details";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeLogin />} />
       <Route path="/createAccount" element={<CreateAccount />} />
+      <Route path="/recoverAccount" element={<RecoverAccount />} />
       <Route path="/mainPage" element={<MainPage />} />
       <Route path="/userProfile" element={<UserProfile />} />
-      <Route path="/recoverAccount" element={<RecoverAccount />} />
       <Route path="/publishProduct" element={<PublishProduct />} />
+      <Route path="/aboutProducts" element={<AboutProducts />} />
+      <Route path="/details" element={<Details />} />
     </Routes>
   );
 }

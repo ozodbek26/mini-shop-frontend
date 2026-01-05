@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Technique.module.scss";
-import { useNavigate } from "react-router-dom";
+import styles from "./Materials.module.scss";
 
 const initialGoods = [];
 
-export default function Technique() {
+import { useNavigate } from "react-router-dom";
+
+export default function Materials() {
   const navigate = useNavigate();
 
   const [goods, setGoods] = useState(initialGoods);
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState({});
-
-  function handleClick(ee) {
-    console.log(ee);
-    setSelected(ee);
-    navigate("/details", { state: { product: ee } });
-  }
+  const [ selected ,setSelected] = useState()
 
   useEffect(() => {
     fetch("http://localhost:7000/product")
@@ -30,17 +25,23 @@ export default function Technique() {
       });
   }, []);
 
+  function handleClick(ee) {
+    console.log(ee);
+    setSelected(ee);
+    navigate("/details", { state: { product: ee } });
+  }
+
   if (loading) {
     return <p>Загрузка товаров...</p>;
   }
 
   return (
-    <div className={styles.Technique}>
-      <h1>Раздел с техникой</h1>
+    <div className={styles.Materials}>
+      <h1>Раздел с Материалы</h1>
 
       <div className={styles.ert23}>
         {goods
-          .filter((ee) => ee.category === "Техника")
+          .filter((ee) => ee.category === "Материалы")
           .map((ee, k) => (
             <div onClick={() => handleClick(ee)} className={styles.dfg} key={k}>
               <img src={ee.images[0]} alt={ee.productName} />
