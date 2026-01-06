@@ -17,7 +17,7 @@ export default function RecoverAccount() {
 
     setCanSend(false);
     setTimeout(() => setCanSend(true), 50000);
-    fetch("http://localhost:7000/recover-account", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/recover-account", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ emailInput: email }),
@@ -36,7 +36,7 @@ export default function RecoverAccount() {
     if (!canSend2)
       return alert("Подождите 20 секунд перед повторной отправкой");
 
-    fetch("http://localhost:7000/time-check", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/time-check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ tokenInput: token.trim() }),

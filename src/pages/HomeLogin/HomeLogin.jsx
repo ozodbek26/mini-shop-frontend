@@ -13,7 +13,7 @@ export default function HomeLogin() {
       Password: password,
     };
 
-    fetch("http://localhost:7000/userverification", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/userverification", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),

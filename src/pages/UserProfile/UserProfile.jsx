@@ -15,7 +15,7 @@ export default function UserProfile() {
   useEffect(() => {
     setUsername23(username);
 
-    fetch("http://localhost:7000/user_image_submission", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/user_image_submission", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
@@ -46,7 +46,7 @@ export default function UserProfile() {
       username,
       aboutmyself: text,
     };
-    fetch("http://localhost:7000/change/aboutmyself", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/change/aboutmyself", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(wf),
@@ -82,7 +82,7 @@ export default function UserProfile() {
       oldUsername: username,
     };
 
-    fetch("http://localhost:7000/change/password", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/change/password", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -131,7 +131,7 @@ export default function UserProfile() {
       newUsername: trimmedNewName,
     };
 
-    fetch("http://localhost:7000/change/username", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/change/username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -147,7 +147,7 @@ export default function UserProfile() {
 
         setUsername23(data.newUsername);
 
-        fetch("http://localhost:7000/user_image_submission", {
+        fetch("https://mini-shop-backend-iinw.onrender.com/user_image_submission", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: data.newUsername }),
@@ -187,7 +187,7 @@ export default function UserProfile() {
       img: text4,
     };
 
-    fetch("http://localhost:7000/change/photo", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/change/photo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -208,7 +208,7 @@ export default function UserProfile() {
   function deleteAccount() {
     const payload = { username };
 
-    fetch("http://localhost:7000/delete/account", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/delete/account", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

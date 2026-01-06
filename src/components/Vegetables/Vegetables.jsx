@@ -11,7 +11,7 @@ export default function Vegetables() {
   const [selected, setSelected] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:7000/product")
+    fetch("https://mini-shop-backend-iinw.onrender.com/product")
       .then((res) => res.json())
       .then((data) => {
         setGoods((prev) => [...prev, ...data]);

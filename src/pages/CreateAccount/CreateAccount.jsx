@@ -64,7 +64,7 @@ export default function CreateAccount() {
       img: b64,
     };
 
-    fetch("http://localhost:7000/registration", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/registration", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),

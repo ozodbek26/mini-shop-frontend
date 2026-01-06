@@ -10,14 +10,14 @@ export default function AboutProducts() {
   const [userImage, setUserImage] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:7000/product")
+    fetch("https://mini-shop-backend-iinw.onrender.com/product")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data || []);
       })
       .catch(console.error);
 
-    fetch("http://localhost:7000/user_image_submission", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/user_image_submission", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),

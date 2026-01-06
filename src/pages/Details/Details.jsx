@@ -26,7 +26,7 @@ export default function Details() {
       return;
     }
 
-    fetch("http://localhost:7000/checkout-basket", {
+    fetch("https://mini-shop-backend-iinw.onrender.com/checkout-basket", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
