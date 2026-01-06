@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CreateAccount.module.scss";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -143,12 +144,18 @@ export default function CreateAccount() {
           Регистрация
         </button>
 
-        <a className={styles.link} href="/">
+        {/* <a className={styles.link} href="/">
           Уже есть аккаунт? Войти
-        </a>
-        <a className={styles.link} href="/recoverAccount">
+        </a> */}
+        <Link className={styles.link} to="/">
+          Уже есть аккаунт? Войти
+        </Link>
+        {/* <a className={styles.link} href="/recoverAccount">
           забыл имя/пароль аккаунта
-        </a>
+        </a> */}
+        <Link className={styles.link} to="/createAccount">
+          забыл имя/пароль аккаунта
+        </Link>
       </div>
     </div>
   );
