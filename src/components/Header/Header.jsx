@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
-
   const [userImage, setUserImage] = useState(null);
   const [balance, setBalance] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -17,7 +17,6 @@ export default function Header() {
       setLoading(false);
       return;
     }
-
     fetch("https://mini-shop-backend-iinw.onrender.com/user_image_submission", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,9 +34,7 @@ export default function Header() {
         console.error("Error fetching user data:", err);
         setBalance(0);
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }, []);
 
   const scrollToSection = (id) => {
@@ -45,104 +42,186 @@ export default function Header() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setMobileMenuOpen(false);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Поиск:", searchQuery);
+    setMobileMenuOpen(false);
   };
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
-    <header className={styles.header}>
-      <div className={styles.leftSection}>
-        <img className={styles.logo} src="/logo.png" alt="Логотип сайта" />
+    <>
+      <header className={styles.header}>
+        <div className={styles.leftSection}>
+          <img className={styles.logo} src="/logo.png" alt="Логотип сайта" />
 
-        <nav className={styles.nav} aria-label="Категории товаров">
-          <button
-            onClick={() => scrollToSection("vegetables")}
-            className={styles.navLink}
-          >
-            Овощи
-          </button>
-          <button
-            onClick={() => scrollToSection("fruits")}
-            className={styles.navLink}
-          >
-            Фрукты
-          </button>
-          <button
-            onClick={() => scrollToSection("technique")}
-            className={styles.navLink}
-          >
-            Техника
-          </button>
-          <button
-            onClick={() => scrollToSection("materials")}
-            className={styles.navLink}
-          >
-            Материалы
-          </button>
-        </nav>
+          <nav className={styles.nav} aria-label="Категории товаров">
+            <button
+              onClick={() => scrollToSection("vegetables")}
+              className={styles.navLink}
+            >
+              Овощи
+            </button>
+            <button
+              onClick={() => scrollToSection("fruits")}
+              className={styles.navLink}
+            >
+              Фрукты
+            </button>
+            <button
+              onClick={() => scrollToSection("technique")}
+              className={styles.navLink}
+            >
+              Техника
+            </button>
+            <button
+              onClick={() => scrollToSection("materials")}
+              className={styles.navLink}
+            >
+              Материалы
+            </button>
+          </nav>
 
-        <form className={styles.searchForm} onSubmit={handleSearch}>
+          <form className={styles.searchForm} onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Поиск товаров..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchInput}
+              aria-label="Поиск по сайту"
+            />
+            <button type="submit" className={styles.searchButton}>
+              Найти
+            </button>
+          </form>
+
+          <button
+            className={styles.mobileMenuButton}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Открыть меню"
+          >
+            {mobileMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+
+        <div className={styles.rightSection}>
+          <div
+            className={styles.balance}
+            aria-label={`Баланс: ${balance ?? "..."} $`}
+          >
+            <span className={styles.balanceLabel}>Баланс</span>
+            <span className={styles.balanceValue}>
+              {loading ? "..." : `${balance ?? 0} $`}
+            </span>
+          </div>
+
+          <button
+            className={styles.profileButton}
+            onClick={() => navigate("/userProfile")}
+            aria-label="Перейти в профиль"
+          >
+            <img
+              src={userImage || defaultProfilePicture}
+              alt="Аватар пользователя"
+              className={styles.profileImage}
+            />
+          </button>
+
+          <button
+            className={styles.actionButton}
+            onClick={() => navigate("/aboutProducts")}
+          >
+            Информация о продажах
+          </button>
+          <button
+            className={styles.actionButton}
+            onClick={() => navigate("/basket")}
+          >
+            Корзина
+          </button>
+          <button
+            className={styles.actionButton}
+            onClick={() => navigate("/publishProduct")}
+          >
+            Опубликовать продукт
+          </button>
+        </div>
+      </header>
+
+      <div
+        className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ""}`}
+      >
+        <form className={styles.mobileSearchForm} onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Поиск товаров..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className={styles.searchInput}
-            aria-label="Поиск по сайту"
           />
           <button type="submit" className={styles.searchButton}>
             Найти
           </button>
         </form>
-      </div>
-
-      <div className={styles.rightSection}>
-        <div
-          className={styles.balance}
-          aria-label={`Баланс: ${balance ?? "..."} $`}
-        >
-          <span className={styles.balanceLabel}>Баланс</span>
-          <span className={styles.balanceValue}>
-            {loading ? "..." : `${balance ?? 0} $`}
-          </span>
-        </div>
 
         <button
-          className={styles.profileButton}
-          onClick={() => navigate("/userProfile")}
-          aria-label="Перейти в профиль"
+          onClick={() => scrollToSection("vegetables")}
+          className={styles.mobileMenuItem}
         >
-          <img
-            src={userImage || defaultProfilePicture}
-            alt="Аватар пользователя"
-            className={styles.profileImage}
-          />
+          Овощи
+        </button>
+        <button
+          onClick={() => scrollToSection("fruits")}
+          className={styles.mobileMenuItem}
+        >
+          Фрукты
+        </button>
+        <button
+          onClick={() => scrollToSection("technique")}
+          className={styles.mobileMenuItem}
+        >
+          Техника
+        </button>
+        <button
+          onClick={() => scrollToSection("materials")}
+          className={styles.mobileMenuItem}
+        >
+          Материалы
         </button>
 
         <button
-          className={styles.actionButton}
-          onClick={() => navigate("/aboutProducts")}
+          onClick={() => {
+            navigate("/aboutProducts");
+            closeMobileMenu();
+          }}
+          className={styles.mobileMenuItem}
         >
           Информация о продажах
         </button>
-
         <button
-          className={styles.actionButton}
-          onClick={() => navigate("/basket")}
+          onClick={() => {
+            navigate("/basket");
+            closeMobileMenu();
+          }}
+          className={styles.mobileMenuItem}
         >
           Корзина
         </button>
-
         <button
-          className={styles.actionButton}
-          onClick={() => navigate("/publishProduct")}
+          onClick={() => {
+            navigate("/publishProduct");
+            closeMobileMenu();
+          }}
+          className={styles.mobileMenuItem}
         >
           Опубликовать продукт
         </button>
       </div>
-    </header>
+    </>
   );
 }
