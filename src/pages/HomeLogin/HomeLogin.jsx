@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import styles from "./HomeLogin.module.scss";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HomeLogin() {
   const navigate = useNavigate();
-  const [users, setUsers] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [users, setUsers] = useState(null);
+  const [username, setUsername] = useState(""); // <- пустая строка
+  const [password, setPassword] = useState(""); // <- пустая строка
+  const [loading, setLoading] = useState(false);
+
   function examination() {
+    if (!username || !password) {
+      alert("Введите username и password");
+      return;
+    }
+
+    setLoading(true);
     const newUser = {
-      username: username,
+      username,
       Password: password,
     };
 
@@ -27,18 +36,23 @@ export default function HomeLogin() {
       })
       .then((data) => {
         setUsers(data);
-        alert(data.message);
+        alert(data.message || "Успешный вход");
 
         if (data.success) {
           localStorage.setItem("username", username);
           localStorage.setItem("password", password);
+
           setUsername("");
           setPassword("");
+
           navigate("/mainPage");
         }
       })
       .catch((error) => {
         alert(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }
 
@@ -64,13 +78,17 @@ export default function HomeLogin() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button onClick={examination} className={styles.button}>
-            Войти
+          <button
+            onClick={examination}
+            className={styles.button}
+            disabled={loading}
+          >
+            {loading ? "Загрузка..." : "Войти"}
           </button>
 
-          <a className={styles.link} href="/createAccount">
+          <Link className={styles.link} to="/createAccount">
             У меня нет аккаунта
-          </a>
+          </Link>
         </div>
 
         <div className={styles.block2}>
