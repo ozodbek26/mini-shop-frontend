@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Details.module.scss";
 
 export default function Details() {
+  const username = localStorage.getItem("username");
   const location = useLocation();
   const navigate = useNavigate();
   const { product } = location.state || {};
@@ -18,6 +19,35 @@ export default function Details() {
     );
   }
 
+  const addToCart = () => {
+    if (!username) {
+      alert("Войдите в аккаунт, чтобы добавить в корзину");
+      navigate("/login");
+      return;
+    }
+
+    fetch("http://localhost:7000/checkout-basket", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        product1token: product.token,
+        price: product.price,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Товар добавлен в корзину!");
+        } else {
+          alert(data.error);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Ошибка соединения");
+      });
+  };
   return (
     <div className={styles.Details}>
       <div className={styles.back}>
@@ -85,7 +115,9 @@ export default function Details() {
 
           <div className={styles.actions}>
             <button className={styles.contact}>Написать продавцу</button>
-            <button className={styles.buy}>в корзину</button>
+            <button onClick={addToCart} className={styles.buy}>
+              в корзину
+            </button>
           </div>
         </div>
       </div>

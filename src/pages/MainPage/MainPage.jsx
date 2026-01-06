@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "./MainPage.module.scss";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
@@ -10,23 +9,28 @@ import Vegetables from "../../components/Vegetables/Vegetables";
 
 export default function MainPage() {
   return (
-    <div className={styles.MainPage}>
+    <>
       <Header />
-      <div className={styles.container}>
-        <section id="technique">
-          <Technique />
-        </section>
-        <section id="materials">
-          <Materials />
-        </section>
-        <section id="fruits">
-          <Fruits />
-        </section>
-        <section id="vegetables">
-          <Vegetables />
-        </section>
-      </div>
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <section id="vegetables" className={styles.section}>
+            <Vegetables />
+          </section>
+
+          <section id="fruits" className={styles.section}>
+            <Fruits />
+          </section>
+
+          <section id="technique" className={styles.section}>
+            <Technique />
+          </section>
+
+          <section id="materials" className={styles.section}>
+            <Materials />
+          </section>
+        </div>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }

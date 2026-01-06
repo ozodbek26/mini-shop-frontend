@@ -58,8 +58,7 @@ export default function Technique() {
                 ))}
               </div>
               <div className={styles.actions}>
-                                                <button> в корзину</button>
-
+                <button> в корзину</button>
               </div>
             </div>
           ))}

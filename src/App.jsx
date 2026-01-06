@@ -7,9 +7,10 @@ import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import MainPage from "./pages/MainPage/MainPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import RecoverAccount from "./pages/RecoverAccount/RecoverAccount";
-import PublishProduct from "./pages/publishProduct/publishProduct";
+import PublishProduct from "./pages/PublishProduct/PublishProduct";
 import AboutProducts from "./pages/AboutProducts/AboutProducts";
 import Details from "./pages/Details/Details";
+import Basket from "./pages/Basket/Basket";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/publishProduct" element={<PublishProduct />} />
       <Route path="/aboutProducts" element={<AboutProducts />} />
       <Route path="/details" element={<Details />} />
+      <Route path="/basket" element={<Basket />} />
     </Routes>
   );
 }

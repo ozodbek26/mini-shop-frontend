@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomeLogin() {
   const navigate = useNavigate();
-
   const [users, setUsers] = useState();
-
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   function examination() {
@@ -83,5 +81,3 @@ export default function HomeLogin() {
     </div>
   );
 }
-
-// userverification
