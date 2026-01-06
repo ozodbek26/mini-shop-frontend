@@ -17,15 +17,15 @@ export default function HomeLogin() {
     }
 
     setLoading(true);
-    const newUser = {
-      username,
-      Password: password,
-    };
+    // const newUser = {
+    //   username,
+    //   Password: password,
+    // };
 
     fetch("https://mini-shop-backend-iinw.onrender.com/userverification", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(username, password),
     })
       .then(async (res) => {
         const data = await res.json();
