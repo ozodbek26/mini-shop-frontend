@@ -1,34 +1,113 @@
+// .Footer {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: flex-start;
+//     padding: 40px;
+//     background-color: #222;
+//     color: white;
+
+//     .column {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 10px;
+
+//         h4 {
+//             margin: 0;
+//             font-size: 18px;
+//             border-bottom: 1px solid #555;
+//             padding-bottom: 5px;
+//         }
+
+//         a {
+//             margin: 0;
+//             font-size: 14px;
+//             color: #ccc;
+//             text-decoration: none;
+
+//             &:hover {
+//                 cursor: pointer;
+//                 border-bottom: 1px solid #555;
+//                 color: white;
+//             }
+//         }
+//     }
+// }
+
 .Footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 40px;
+  background-color: #222;
+  color: white;
+  flex-wrap: wrap; // важно для адаптива
+
+  .column {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 40px;
-    background-color: #222;
-    color: white;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px; // чтобы колонки не схлопывались
+    margin-bottom: 20px;
 
-    .column {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        h4 {
-            margin: 0;
-            font-size: 18px;
-            border-bottom: 1px solid #555;
-            padding-bottom: 5px;
-        }
-
-        a {
-            margin: 0;
-            font-size: 14px;
-            color: #ccc;
-            text-decoration: none;
-
-            &:hover {
-                cursor: pointer;
-                border-bottom: 1px solid #555;
-                color: white;
-            }
-        }
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 5px;
     }
+
+    a {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid #555;
+        color: white;
+      }
+    }
+  }
+}
+
+/* --- АДАПТИВ --- */
+
+/* Планшеты */
+@media (max-width: 900px) {
+  .Footer {
+    justify-content: space-between;
+    padding: 30px;
+  }
+}
+
+/* Телефоны */
+@media (max-width: 600px) {
+  .Footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .column {
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 400px) {
+  .Footer {
+    padding: 20px;
+  }
+
+  .column h4 {
+    font-size: 16px;
+  }
+
+  .column a {
+    font-size: 13px;
+  }
 }

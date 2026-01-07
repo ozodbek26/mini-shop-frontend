@@ -4,33 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 export default function PublishProduct() {
   const savedUser = localStorage.getItem("username");
-
   const navigate = useNavigate();
-  // цена
+
   const [price, setPrice] = useState("");
-
-  // название товара
   const [productName, setProductName] = useState("");
-
-  // особенности товара
   const [peculiarities, setPeculiarities] = useState("");
-
-  // способ получения --- Как можно забрать товар
   const [deliveryMethod, setDeliveryMethod] = useState("");
-
-  // срок хранения
   const [storageTime, setStorageTime] = useState("");
-
-  // выбранная категория --- Тип товара
   const [category, setCategory] = useState("");
-
-  // список хештегов
   const [hashtags, setHashtags] = useState([]);
-
-  // изображения товара (максимум 5)
   const [images, setImages] = useState([]);
-
-  // текущий ввод хештега
   const [hashtag, setHashtag] = useState("");
 
   function handleFileChange(e) {
@@ -84,42 +67,34 @@ export default function PublishProduct() {
     }
 
     const priceNumber = Number(price);
-
     if (Number.isNaN(priceNumber)) {
       alert("Цена должна быть числом");
       return;
     }
-
     if (priceNumber <= 0 || priceNumber > 9999999999) {
       alert("Цена должна быть больше 0 и меньше 9 999 999 999");
       return;
     }
-
     if (productName.length < 10 || productName.length > 250) {
       alert("Название товара должно быть от 10 до 250 символов");
       return;
     }
-
     if (peculiarities.length < 20 || peculiarities.length > 750) {
       alert("Описание должно быть от 20 до 750 символов");
       return;
     }
-
     if (deliveryMethod.length < 10 || deliveryMethod.length > 250) {
       alert("Способ получения должен быть от 10 до 250 символов");
       return;
     }
-
     if (storageTime.length < 10 || storageTime.length > 250) {
       alert("Срок хранения должен быть от 10 до 250 символов");
       return;
     }
-
     if (hashtags.length < 5 || hashtags.length > 20) {
       alert("Количество хештегов должно быть от 5 до 20");
       return;
     }
-
     if (images.length < 5) {
       alert("Необходимо загрузить минимум 5 изображений");
       return;
@@ -147,7 +122,7 @@ export default function PublishProduct() {
         if (data.error) alert("Ошибка: " + JSON.stringify(data.error));
         else alert("Успешно опубликовано!");
       })
-      .catch((err) => alert("Сервер недоступен"));
+      .catch(() => alert("Сервер недоступен"));
   }
 
   return (
@@ -216,10 +191,13 @@ export default function PublishProduct() {
             />
           </label>
         </section>
+
         <section className={styles.section}>
           <h2>Фотографии товара</h2>
 
-          <p className={styles.hint}>Можно загрузить до 5 изображений</p>
+          <p className={styles.hint}>
+            Можно загрузить до 5 изображений (минимум 5)
+          </p>
 
           <input
             type="file"
@@ -227,6 +205,7 @@ export default function PublishProduct() {
             accept="image/*"
             onChange={handleFileChange}
             disabled={images.length >= 5}
+            className={styles.fileInput23}
           />
 
           {images.length > 0 && (
@@ -247,7 +226,11 @@ export default function PublishProduct() {
             </div>
           )}
 
-          {images.length < 5 && <p>{5 - images.length} фото можно добавить</p>}
+          {images.length < 5 && (
+            <p className={styles.remainingPhotos}>
+              Осталось загрузить: {5 - images.length} фото
+            </p>
+          )}
         </section>
 
         <section className={styles.section}>
@@ -273,7 +256,7 @@ export default function PublishProduct() {
           <h2>Хештеги</h2>
 
           <p className={styles.hint}>
-            От 3 до 35 символов. Максимум 20 хештегов
+            От 3 до 35 символов. От 5 до 20 хештегов
           </p>
 
           <div className={styles.tagsInput}>

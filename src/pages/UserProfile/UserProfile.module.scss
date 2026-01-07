@@ -43,10 +43,9 @@
         img {
             width: 140px;
             height: 140px;
-            border-radius: 16px;
+            border-radius: 50%;
             object-fit: cover;
             border: 2px solid #4a90e2;
-            border-radius: 50%;
         }
     }
 
@@ -61,11 +60,6 @@
             font-size: 14px;
             color: #4b5563;
             line-height: 1.6;
-        }
-
-
-        .about_h1 {
-            display: flex;
         }
     }
 
@@ -129,5 +123,82 @@
                 background: #fddcdc;
             }
         }
+    }
+}
+
+@media (max-width: 900px) {
+    .page {
+        padding: 30px;
+    }
+
+    .profileCard {
+        width: 360px;
+        padding: 28px;
+    }
+
+    .avatar img {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 20px;
+    }
+
+    .back {
+        top: 14px !important;
+        right: 14px !important;
+
+        button {
+            padding: 6px 10px !important;
+            font-size: 13px;
+        }
+    }
+
+    .profileCard {
+        width: 100%;
+        max-width: 360px;
+        padding: 22px;
+    }
+
+    .avatar img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .about p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .page {
+        padding: 15px;
+    }
+
+    .profileCard {
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .about h2 {
+        font-size: 18px;
+    }
+
+    .about p {
+        font-size: 12px;
+    }
+
+    .actions button,
+    .danger button {
+        padding: 8px;
+        font-size: 13px;
     }
 }

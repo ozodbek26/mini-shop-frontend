@@ -103,3 +103,71 @@
     }
   }
 }
+
+
+
+
+/* -------------------- */
+/*       АДАПТИВ        */
+/* -------------------- */
+
+@media (max-width: 900px) {
+    .Technique h1 {
+        font-size: 24px;
+    }
+
+    .ert23 {
+        gap: 15px;
+    }
+
+    .dfg img {
+        height: 140px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Technique {
+        width: 80%;
+
+        padding: 15px;
+    }
+
+    .Technique h1 {
+        font-size: 22px;
+    }
+
+    .ert23 {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .dfg img {
+        height: 130px;
+    }
+
+    .dfg .info p {
+        font-size: 13px;
+    }
+
+    .dfg .tags span {
+        font-size: 11px;
+        padding: 2px 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .Technique h1 {
+        font-size: 20px;
+    }
+
+    .ert23 {
+        grid-template-columns: 1fr;
+    }
+
+    .dfg img {
+        height: 120px;
+    }
+
+    .dfg .info p {
+        font-size: 12px;
+    }
+}

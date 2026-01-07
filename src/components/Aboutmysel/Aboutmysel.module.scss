@@ -22,7 +22,7 @@
   }
 
   .inputBlock {
-    display: none; // по умолчанию скрыто
+    display: none;
     flex-direction: row;
     gap: 8px;
 
@@ -32,25 +32,43 @@
       border: 1px solid #4a90e2;
       border-radius: 10px;
       outline: none;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     button {
       padding: 10px 16px;
       border-radius: 10px;
-      border: 1px solid #4a90e2;
-      background: #ffffff;
-      color: #4a90e2;
+      border: none;
+      background: #16a34a;
+      color: #ffffff;
       cursor: pointer;
       transition: 0.2s;
+      font-weight: 500;
 
       &:hover {
-        background: #4a90e2;
-        color: #ffffff;
+        background: #15803d;
       }
     }
   }
 
   .show {
     display: flex;
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .aboutMyself .inputBlock {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
   }
 }
