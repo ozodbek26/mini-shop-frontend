@@ -1,0 +1,38 @@
+{
+  "home": {
+    "login_title": "Login",
+    "login_username_placeholder": "Username",
+    "login_password_placeholder": "Password",
+    "login_button": "Log In",
+    "login_loading": "Loading...",
+    "login_no_account": "I don't have an account",
+    "login_guest": "Enter as guest",
+    "welcome_title": "Welcome",
+    "welcome_subtitle": "Enter your credentials to log in",
+    "error_enter_username_password": "Please enter username and password",
+    "error_server": "Server error",
+    "success_login": "Login successful"
+  },
+
+  "header": {
+    "menu_vegetables": "Vegetables",
+    "menu_fruits": "Fruits",
+    "menu_technique": "Electronics",
+    "menu_materials": "Materials",
+
+    "search_placeholder": "Search products...",
+    "search_button": "Search",
+
+    "balance_label": "Balance",
+
+    "sales_info": "Sales information",
+    "basket": "Cart",
+    "publish_product": "Publish product",
+
+    "seller_contact": "Message seller",
+    "to_cart": "Add to cart",
+
+    "mobile_close": "Close",
+    "mobile_menu": "Menu"
+  }
+}

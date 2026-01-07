@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import defaultProfilePicture from "../../assets/images/profilePicture.png";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 export default function Header() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [userImage, setUserImage] = useState(null);
   const [balance, setBalance] = useState(null);
@@ -60,43 +63,47 @@ export default function Header() {
           <img className={styles.logo} src="/logo.png" alt="Логотип сайта" />
 
           <nav className={styles.nav} aria-label="Категории товаров">
+            <BurgerMenu />
             <button
               onClick={() => scrollToSection("vegetables")}
               className={styles.navLink}
             >
-              Овощи
+              {t("header.menu_vegetables")}
             </button>
+
             <button
               onClick={() => scrollToSection("fruits")}
               className={styles.navLink}
             >
-              Фрукты
+              {t("header.menu_fruits")}
             </button>
+
             <button
               onClick={() => scrollToSection("technique")}
               className={styles.navLink}
             >
-              Техника
+              {t("header.menu_technique")}
             </button>
+
             <button
               onClick={() => scrollToSection("materials")}
               className={styles.navLink}
             >
-              Материалы
+              {t("header.menu_materials")}
             </button>
           </nav>
 
           <form className={styles.searchForm} onSubmit={handleSearch}>
             <input
               type="text"
-              placeholder="Поиск товаров..."
+              placeholder={t("header.search_placeholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={styles.searchInput}
               aria-label="Поиск по сайту"
             />
             <button type="submit" className={styles.searchButton}>
-              Найти
+              {t("header.search_button")}
             </button>
           </form>
 
@@ -112,9 +119,11 @@ export default function Header() {
         <div className={styles.rightSection}>
           <div
             className={styles.balance}
-            aria-label={`Баланс: ${balance ?? "..."} $`}
+            aria-label={`${t("header.balance_label")}: ${balance ?? "..."} $`}
           >
-            <span className={styles.balanceLabel}>Баланс</span>
+            <span className={styles.balanceLabel}>
+              {t("header.balance_label")}
+            </span>
             <span className={styles.balanceValue}>
               {loading ? "..." : `${balance ?? 0} $`}
             </span>
@@ -136,19 +145,21 @@ export default function Header() {
             className={styles.actionButton}
             onClick={() => navigate("/aboutProducts")}
           >
-            Информация о продажах
+            {t("header.sales_info")}
           </button>
+
           <button
             className={styles.actionButton}
             onClick={() => navigate("/basket")}
           >
-            Корзина
+            {t("header.basket")}
           </button>
+
           <button
             className={styles.actionButton}
             onClick={() => navigate("/publishProduct")}
           >
-            Опубликовать продукт
+            {t("header.publish_product")}
           </button>
         </div>
       </header>
@@ -159,13 +170,13 @@ export default function Header() {
         <form className={styles.mobileSearchForm} onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Поиск товаров..."
+            placeholder={t("header.search_placeholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className={styles.searchInput}
           />
           <button type="submit" className={styles.searchButton}>
-            Найти
+            {t("header.search_button")}
           </button>
         </form>
 
@@ -173,25 +184,28 @@ export default function Header() {
           onClick={() => scrollToSection("vegetables")}
           className={styles.mobileMenuItem}
         >
-          Овощи
+          {t("header.menu_vegetables")}
         </button>
+
         <button
           onClick={() => scrollToSection("fruits")}
           className={styles.mobileMenuItem}
         >
-          Фрукты
+          {t("header.menu_fruits")}
         </button>
+
         <button
           onClick={() => scrollToSection("technique")}
           className={styles.mobileMenuItem}
         >
-          Техника
+          {t("header.menu_technique")}
         </button>
+
         <button
           onClick={() => scrollToSection("materials")}
           className={styles.mobileMenuItem}
         >
-          Материалы
+          {t("header.menu_materials")}
         </button>
 
         <button
@@ -201,8 +215,9 @@ export default function Header() {
           }}
           className={styles.mobileMenuItem}
         >
-          Информация о продажах
+          {t("header.sales_info")}
         </button>
+
         <button
           onClick={() => {
             navigate("/basket");
@@ -210,8 +225,9 @@ export default function Header() {
           }}
           className={styles.mobileMenuItem}
         >
-          Корзина
+          {t("header.basket")}
         </button>
+
         <button
           onClick={() => {
             navigate("/publishProduct");
@@ -219,7 +235,7 @@ export default function Header() {
           }}
           className={styles.mobileMenuItem}
         >
-          Опубликовать продукт
+          {t("header.publish_product")}
         </button>
       </div>
     </>

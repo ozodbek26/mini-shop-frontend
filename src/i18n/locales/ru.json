@@ -1,0 +1,38 @@
+{
+  "home": {
+    "login_title": "Вход",
+    "login_username_placeholder": "Имя",
+    "login_password_placeholder": "Пароль",
+    "login_button": "Войти",
+    "login_loading": "Загрузка...",
+    "login_no_account": "У меня нет аккаунта",
+    "login_guest": "Войти как гость",
+    "welcome_title": "Добро пожаловать",
+    "welcome_subtitle": "Введите данные для входа",
+    "error_enter_username_password": "Введите имя и пароль",
+    "error_server": "Ошибка сервера",
+    "success_login": "Успешный вход"
+  },
+
+  "header": {
+    "menu_vegetables": "Овощи",
+    "menu_fruits": "Фрукты",
+    "menu_technique": "Техника",
+    "menu_materials": "Материалы",
+
+    "search_placeholder": "Поиск товаров...",
+    "search_button": "Найти",
+
+    "balance_label": "Баланс",
+
+    "sales_info": "Информация о продажах",
+    "basket": "Корзина",
+    "publish_product": "Опубликовать продукт",
+
+    "seller_contact": "Написать продавцу",
+    "to_cart": "В корзину",
+
+    "mobile_close": "Закрыть",
+    "mobile_menu": "Меню"
+  }
+}

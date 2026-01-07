@@ -1,0 +1,38 @@
+{
+  "home": {
+    "login_title": "Кирүү",
+    "login_username_placeholder": "Аты",
+    "login_password_placeholder": "Сырсөз",
+    "login_button": "Кирүү",
+    "login_loading": "Жүктөлүүдө...",
+    "login_no_account": "Менин аккаунтум жок",
+    "login_guest": "Конок катары кирүү",
+    "welcome_title": "Кош келиңиз",
+    "welcome_subtitle": "Кирүү үчүн маалыматтарды киргизиңиз",
+    "error_enter_username_password": "Атыңызды жана сырсөзүңүздү киргизиңиз",
+    "error_server": "Сервер катасы",
+    "success_login": "Ийгиликтүү кирдиңиз"
+  },
+
+  "header": {
+    "menu_vegetables": "Жашылчалар",
+    "menu_fruits": "Жемиштер",
+    "menu_technique": "Техника",
+    "menu_materials": "Материалдар",
+
+    "search_placeholder": "Товарларды издөө...",
+    "search_button": "Издөө",
+
+    "balance_label": "Баланс",
+
+    "sales_info": "Сатуу жөнүндө маалымат",
+    "basket": "Себет",
+    "publish_product": "Продукт жарыялоо",
+
+    "seller_contact": "Сатуучуга жазуу",
+    "to_cart": "Себетке салуу",
+
+    "mobile_close": "Жабуу",
+    "mobile_menu": "Меню"
+  }
+}

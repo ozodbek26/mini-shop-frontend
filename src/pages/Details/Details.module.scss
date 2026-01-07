@@ -29,6 +29,7 @@
 
   .container {
     width: 900px;
+    max-width: 95%;
     margin: 0 auto;
     background: #fff;
     padding: 32px;
@@ -38,14 +39,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 
+    /* Планшеты */
     @media (max-width: 900px) {
-      width: 90%;
       grid-template-columns: 1fr;
       gap: 24px;
+      padding: 24px;
     }
 
     @media (max-width: 600px) {
-      padding: 20px;
+      width: 88%;
+      margin-top: 50px;
+      padding: 20px 14px;
+      gap: 16px;
     }
   }
 
@@ -54,16 +59,30 @@
     font-size: 26px;
     text-align: center;
     margin-bottom: 20px;
+
+    @media (max-width: 400px) {
+      font-size: 22px;
+    }
   }
 
   .gallery {
-    .mainImage {
-      img {
-        width: 100%;
-        max-height: 450px;
-        object-fit: contain;
-        border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    .mainImage img {
+      width: 100%;
+      height: auto;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 600px) {
+        max-height: 280px;
+        width: 80%;
+      }
+
+      @media (max-width: 375px) {
+        max-height: 240px;
       }
     }
 
@@ -74,14 +93,18 @@
       overflow-x: auto;
       padding-bottom: 8px;
 
+      @media (max-width: 400px) {
+        max-width: 300px;
+      }
+
       img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         object-fit: cover;
         border-radius: 8px;
         cursor: pointer;
         border: 2px solid transparent;
-        transition: 0.2s;
+        transition: 0.2s flex-shrink 0;
 
         &:hover {
           border-color: #4a90e2;
@@ -91,6 +114,11 @@
         &.active {
           border-color: #4a90e2;
         }
+
+        @media (max-width: 400px) {
+          width: 60px;
+          height: 60px;
+        }
       }
     }
   }
@@ -98,7 +126,11 @@
   .infoSection {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+
+    @media (max-width: 400px) {
+      gap: 14px;
+    }
   }
 
   .priceBlock {
@@ -107,28 +139,25 @@
     gap: 12px;
     font-size: 18px;
 
-    .priceLabel {
-      color: #555;
-      font-size: 16px;
-    }
-
     .price {
       font-size: 28px;
       font-weight: bold;
       color: #e91e63;
+
+      @media (max-width: 400px) {
+        font-size: 24px;
+      }
     }
   }
 
   .details {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     font-size: 14px;
-    color: #333;
 
-    p {
-      margin: 0;
-      line-height: 1.5;
+    @media (max-width: 400px) {
+      font-size: 13px;
     }
 
     strong {
@@ -148,6 +177,10 @@
       padding: 6px 10px;
       border-radius: 12px;
       font-size: 12px;
+
+      @media (max-width: 400px) {
+        font-size: 11px;
+      }
     }
   }
 
@@ -164,7 +197,12 @@
       cursor: pointer;
       transition: 0.2s;
       flex: 1;
-      min-width: 160px;
+      min-width: 150px;
+
+      @media (max-width: 400px) {
+        font-size: 14px;
+        padding: 10px 14px;
+      }
 
       &.contact {
         background: #4a90e2;

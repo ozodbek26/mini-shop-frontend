@@ -2,6 +2,7 @@
     padding: 32px;
     background-color: #f6f7f9;
     min-height: 100vh;
+    position: relative;
 
     h1 {
         margin-bottom: 24px;
@@ -33,8 +34,10 @@
     }
 }
 
+/* Поиск + аватар */
 .search {
     display: flex;
+    flex-wrap: nowrap;
     gap: 12px;
     margin-bottom: 32px;
 
@@ -43,7 +46,7 @@
         height: 50px;
         border-radius: 50%;
         overflow: hidden;
-        flex-shrink: 0; // чтобы аватар не сжимался
+        flex-shrink: 0;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
         .userImage {
@@ -192,5 +195,98 @@
 
     &:hover {
         background-color: #e04345;
+    }
+}
+
+/* ========================= */
+/*        АДАПТИВКА         */
+/* ========================= */
+
+/* Планшеты */
+@media (max-width: 900px) {
+    .AboutProducts {
+        padding: 24px;
+    }
+
+    .yourGoods {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .search {
+        gap: 10px;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 600px) {
+    .AboutProducts {
+        padding: 16px;
+    }
+
+    .back {
+        top: 16px;
+        right: 16px;
+    }
+
+    .search {
+        flex-direction: column;
+        align-items: stretch;
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        input {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .userProfile {
+            margin: 0 auto;
+        }
+    }
+
+    .yourGoods {
+        grid-template-columns: 1fr;
+        /* одна карточка */
+    }
+
+    .block {
+        padding: 16px;
+    }
+
+    .images {
+        grid-template-columns: 1fr;
+
+        img {
+            height: 160px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .AboutProducts h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .block h2 {
+        font-size: 18px;
+    }
+
+    .search input {
+        font-size: 13px;
+        width: 90%;
+    }
+
+    .search button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .tags span {
+        font-size: 11px;
     }
 }
