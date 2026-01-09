@@ -18,6 +18,8 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid black;
+
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -39,6 +41,7 @@
 .currentLang {
   min-width: 28px;
   font-weight: 600;
+  color: #605d5d;
 }
 
 .arrow {
