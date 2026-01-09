@@ -4,13 +4,14 @@ import styles from "./Materials.module.scss";
 const initialGoods = [];
 
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function Materials() {
   const navigate = useNavigate();
 
   const [goods, setGoods] = useState(initialGoods);
   const [loading, setLoading] = useState(true);
-  const [ selected ,setSelected] = useState()
+  const [selected, setSelected] = useState();
 
   useEffect(() => {
     fetch("https://mini-shop-backend-iinw.onrender.com/product")
@@ -32,7 +33,11 @@ export default function Materials() {
   }
 
   if (loading) {
-    return <p>Загрузка товаров...</p>;
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   }
 
   return (
@@ -59,8 +64,7 @@ export default function Materials() {
                 ))}
               </div>
               <div className={styles.actions}>
-                                                <button> в корзину</button>
-
+                <button> в корзину</button>
               </div>
             </div>
           ))}

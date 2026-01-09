@@ -4,6 +4,7 @@ import defaultProfilePicture from "../../assets/images/profilePicture.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Loading from "../Loading/Loading";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -13,6 +14,13 @@ export default function Header() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [burgerMenu, setBurgerMenu] = useState(true);
+  // const [burgerMenu2, setBurgerMenu2] = useState(true);
+
+  // function name23() {
+  //   setBurgerMenu2(!burgerMenu2);
+  // }
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -64,33 +72,62 @@ export default function Header() {
 
           <nav className={styles.nav} aria-label="Категории товаров">
             <BurgerMenu />
-            <button
-              onClick={() => scrollToSection("vegetables")}
-              className={styles.navLink}
-            >
-              {t("header.menu_vegetables")}
-            </button>
+            <div className={styles.burgerCategoriesWrapper}>
+              <button
+                className={styles.burgerToggle}
+                onClick={() => setBurgerMenu(!burgerMenu)}
+                aria-label="Открыть меню категорий"
+                aria-expanded={burgerMenu}
+              >
+                <span className={styles.burgerIcon}>
+                  {burgerMenu ? "✕" : "☰"}
+                </span>
+                <span className={styles.burgerLabel}>Категории</span>
+              </button>
 
-            <button
-              onClick={() => scrollToSection("fruits")}
-              className={styles.navLink}
-            >
-              {t("header.menu_fruits")}
-            </button>
-
-            <button
-              onClick={() => scrollToSection("technique")}
-              className={styles.navLink}
-            >
-              {t("header.menu_technique")}
-            </button>
-
-            <button
-              onClick={() => scrollToSection("materials")}
-              className={styles.navLink}
-            >
-              {t("header.menu_materials")}
-            </button>
+              <div
+                className={`${styles.burgerDropdown} ${
+                  burgerMenu ? styles.open : ""
+                }`}
+              >
+                <button
+                  onClick={() => {
+                    scrollToSection("vegetables");
+                    setBurgerMenu(false);
+                  }}
+                  className={styles.burgerItem}
+                >
+                  {t("header.menu_vegetables")}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("fruits");
+                    setBurgerMenu(false);
+                  }}
+                  className={styles.burgerItem}
+                >
+                  {t("header.menu_fruits")}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("technique");
+                    setBurgerMenu(false);
+                  }}
+                  className={styles.burgerItem}
+                >
+                  {t("header.menu_technique")}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("materials");
+                    setBurgerMenu(false);
+                  }}
+                  className={styles.burgerItem}
+                >
+                  {t("header.menu_materials")}
+                </button>
+              </div>
+            </div>
           </nav>
 
           <form className={styles.searchForm} onSubmit={handleSearch}>
@@ -106,7 +143,6 @@ export default function Header() {
               {t("header.search_button")}
             </button>
           </form>
-
           <button
             className={styles.mobileMenuButton}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -130,18 +166,6 @@ export default function Header() {
           </div>
 
           <button
-            className={styles.profileButton}
-            onClick={() => navigate("/userProfile")}
-            aria-label="Перейти в профиль"
-          >
-            <img
-              src={userImage || defaultProfilePicture}
-              alt="Аватар пользователя"
-              className={styles.profileImage}
-            />
-          </button>
-
-          <button
             className={styles.actionButton}
             onClick={() => navigate("/aboutProducts")}
           >
@@ -162,11 +186,23 @@ export default function Header() {
             {t("header.publish_product")}
           </button>
         </div>
+        <button
+          className={styles.profileButton}
+          onClick={() => navigate("/userProfile")}
+          aria-label="Перейти в профиль"
+        >
+          <img
+            src={userImage || defaultProfilePicture}
+            alt="Аватар пользователя"
+            className={styles.profileImage}
+          />
+        </button>
       </header>
 
       <div
         className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ""}`}
       >
+        <BurgerMenu />
         <form className={styles.mobileSearchForm} onSubmit={handleSearch}>
           <input
             type="text"

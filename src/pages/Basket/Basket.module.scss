@@ -4,6 +4,26 @@
     background: #f6f7fb;
     font-family: 'Inter', sans-serif;
     color: #111827;
+
+    .back {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+
+        button {
+            background: transparent;
+            border: 1px solid #4a90e2;
+            color: #4a90e2;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+
+            &:hover {
+                background: #4a90e2;
+                color: #ffffff;
+            }
+        }
+    }
 }
 
 

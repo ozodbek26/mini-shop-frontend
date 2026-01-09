@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Fruits.module.scss";
+import Loading from "../Loading/Loading";
 const initialGoods = [];
 
 export default function Fruits() {
@@ -29,7 +30,11 @@ export default function Fruits() {
     navigate("/details", { state: { product: ee } });
   }
   if (loading) {
-    return <p>Загрузка товаров...</p>;
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   }
   return (
     <div className={styles.Fruits}>
@@ -55,8 +60,7 @@ export default function Fruits() {
                 ))}
               </div>
               <div className={styles.actions}>
-                                <button> в корзину</button>
-
+                <button> в корзину</button>
               </div>
             </div>
           ))}

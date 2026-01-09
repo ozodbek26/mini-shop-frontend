@@ -75,6 +75,16 @@ export default function Basket() {
       <div className={styles.Basket}>
         <h1>Корзина</h1>
         <p>Ваша корзина пуста</p>
+
+        <div className={styles.back}>
+          <button
+            onClick={() => {
+              navigate("/mainPage");
+            }}
+          >
+            ← Назад
+          </button>
+        </div>
       </div>
     );
   const total = userBasket.reduce((sum, item) => sum + item.price, 0);

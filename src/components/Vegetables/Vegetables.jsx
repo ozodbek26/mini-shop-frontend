@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Vegetables.module.scss";
+import Loading from "../Loading/Loading";
 const initialGoods = [];
 
 export default function Vegetables() {
@@ -24,7 +25,11 @@ export default function Vegetables() {
   }, []);
 
   if (loading) {
-    return <p>Загрузка товаров...</p>;
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   }
   function handleClick(ee) {
     console.log(ee);
@@ -34,6 +39,7 @@ export default function Vegetables() {
 
   return (
     <div className={styles.Vegetables}>
+
       <h1>Раздел с Овощи</h1>
 
       <div className={styles.ert23}>

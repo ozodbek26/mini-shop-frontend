@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Technique.module.scss";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const initialGoods = [];
 
@@ -31,7 +32,11 @@ export default function Technique() {
   }, []);
 
   if (loading) {
-    return <p>Загрузка товаров...</p>;
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   }
 
   return (
