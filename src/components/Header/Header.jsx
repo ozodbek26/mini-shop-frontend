@@ -13,14 +13,38 @@ export default function Header() {
   const [balance, setBalance] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   const [burgerMenu, setBurgerMenu] = useState(true);
-  // const [burgerMenu2, setBurgerMenu2] = useState(true);
 
-  // function name23() {
-  //   setBurgerMenu2(!burgerMenu2);
-  // }
+  function search() {
+    if (!searchQuery.trim()) {
+      alert("Введите хэштег");
+      return;
+    }
+
+    fetch("https://mini-shop-backend-iinw.onrender.com/checking-hashtag", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ textFromInput: searchQuery }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.products.length > 0) {
+          console.log("Найденные товары:", data.products);
+          console.log("Найденные товары: ", data.found);
+          setSearchResults(data.products);
+        } else {
+          alert("Ничего не найдено");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Ошибка сервера");
+      });
+  }
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -72,6 +96,7 @@ export default function Header() {
 
           <nav className={styles.nav} aria-label="Категории товаров">
             <BurgerMenu />
+            {/* {searchResults} */}
             <div className={styles.burgerCategoriesWrapper}>
               <button
                 className={styles.burgerToggle}
@@ -139,7 +164,11 @@ export default function Header() {
               className={styles.searchInput}
               aria-label="Поиск по сайту"
             />
-            <button type="submit" className={styles.searchButton}>
+            <button
+              onClick={search}
+              type="submit"
+              className={styles.searchButton}
+            >
               {t("header.search_button")}
             </button>
           </form>
